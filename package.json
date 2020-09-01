@@ -1,0 +1,17 @@
+{
+  "name": "data-structures",
+  "version": "1.0.0",
+  "description": "data structures implementation",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "watch-ts": "tsc -w",
+    "start:list": "node ./dist/lists",
+    "start:linked-list": "node ./dist/linked-list"
+  },
+  "author": "Erik Mesropyan",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
+}
