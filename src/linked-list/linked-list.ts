@@ -1,7 +1,7 @@
 import {List} from './list';
 
 class Node<T> {
-    constructor(public value: T, public next: Node<T> | null, public prev: Node<T> | null) {
+    constructor(public value: T, public next: Node<T> | null = null, public prev: Node<T> | null = null) {
     }
 }
 
@@ -17,10 +17,10 @@ export class LinkedList<T> implements List<T> {
         }
     }
 
-    addFirst(value: T): boolean {
+    public addFirst(value: T): boolean {
         if (value) {
             if (this.firstElement) {
-                this.firstElement = new Node(value, this.firstElement, null);
+                this.firstElement = new Node(value, this.firstElement);
                 this.increaseSize();
             } else {
                 this.firstTimeInitialize(value);
@@ -30,7 +30,7 @@ export class LinkedList<T> implements List<T> {
         return false;
     }
 
-    exists(value: T): boolean {
+    public exists(value: T): boolean {
         if (!this.firstElement || !value)
             return false;
 
@@ -47,7 +47,7 @@ export class LinkedList<T> implements List<T> {
         return exist;
     }
 
-    pop(): T | undefined {
+    public pop(): T | undefined {
         if (this.lastElement) {
             const value = this.lastElement.value;
             let prev = this.lastElement.prev;
@@ -64,7 +64,7 @@ export class LinkedList<T> implements List<T> {
         return undefined;
     }
 
-    push(value: T): boolean {
+    public push(value: T): boolean {
         if (!value)
             return false;
 
@@ -83,7 +83,7 @@ export class LinkedList<T> implements List<T> {
         return true;
     }
 
-    remove(object: T): T | null {
+    public remove(object: T): T | null {
         if (!object)
             return null;
 
@@ -117,7 +117,7 @@ export class LinkedList<T> implements List<T> {
         return null;
     }
 
-    removeFirst(): T | undefined {
+    public removeFirst(): T | undefined {
         if (!this.firstElement)
             return undefined;
 
@@ -133,12 +133,12 @@ export class LinkedList<T> implements List<T> {
         return node.value;
     }
 
-    size(): number {
+    public size(): number {
         return this.length;
     }
 
     private firstTimeInitialize(value: T): void {
-        this.firstElement = new Node<T>(value, null, null);
+        this.firstElement = new Node<T>(value);
         this.increaseSize();
     }
 
@@ -150,7 +150,7 @@ export class LinkedList<T> implements List<T> {
         this.length--;
     }
 
-    addAll(values: Array<T>): boolean {
+    public addAll(values: Array<T>): boolean {
         if (!values || values.length === 0)
             return false;
         let i = false;
@@ -173,7 +173,7 @@ export class LinkedList<T> implements List<T> {
         return true;
     }
 
-    get(index: number): T | null {
+    public get(index: number): T | null {
         if (!this.firstElement)
             return null;
         let counter = 0;
@@ -189,21 +189,21 @@ export class LinkedList<T> implements List<T> {
         return null;
     }
 
-    getFirst(): T | null {
+    public getFirst(): T | null {
         if (this.firstElement)
             return this.firstElement.value;
 
         return null;
     }
 
-    getLast(): T | null {
+    public getLast(): T | null {
         if (this.lastElement)
             return this.lastElement.value;
 
         return null;
     }
 
-    toArray(): Array<T> | null {
+    public toArray(): Array<T> | null {
         let arr: T[] | null = [];
         if (!this.firstElement)
             return arr;

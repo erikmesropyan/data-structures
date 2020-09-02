@@ -7,7 +7,10 @@
     "build": "tsc -p .",
     "watch-ts": "tsc -w",
     "start:list": "node ./dist/lists",
-    "start:linked-list": "node ./dist/linked-list"
+    "start:linked-list": "node ./dist/linked-list",
+    "start:stack": "node ./dist/stack",
+    "start:queue": "node ./dist/queue/index",
+    "start:map": "node ./dist/map/index"
   },
   "author": "Erik Mesropyan",
   "license": "ISC",
